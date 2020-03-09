@@ -1,5 +1,7 @@
 'use strict'
 
+const Article = use("App/Models/Article");
+
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -13,11 +15,12 @@ class ArticleController {
    * GET articles
    *
    * @param {object} ctx
-   * @param {Request} ctx.request
    * @param {Response} ctx.response
-   * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
+  async index ({ response }) {
+    const article = await Article.all();
+    console.log(article)
+    return response.status(200).json(article);
   }
 
   /**

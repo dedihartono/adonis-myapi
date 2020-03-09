@@ -25,4 +25,5 @@ Route.get("/", () => {
 
 Route.group(() => {
   Route.get("user", "UserController.index");
+  Route.get("article", "ArticleController.index");
 }).prefix("api/v1");
